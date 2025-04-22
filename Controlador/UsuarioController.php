@@ -92,7 +92,7 @@ else if($_POST['funcion']=='editar_avatar'){
             $id = $_SESSION['id'];
             $nombreDelArchivo = date("Y-m-d-h-i-s");
             $filename = $nombreDelArchivo."__".$_FILES['avatar_usuario']['name'];
-            $location = "../Pictures/Usuarios/". $filename;
+            $location = "/Sistema_Farmacia/Pictures/Usuarios/". $filename;
             move_uploaded_file($_FILES['avatar_usuario']['tmp_name'], $location);
             $avat= $_SESSION['avatar'];
             if($avat!='avatar.png'){

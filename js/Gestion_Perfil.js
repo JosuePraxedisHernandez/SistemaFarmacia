@@ -1,7 +1,7 @@
 $(document).ready(function () {
     Loader(" Datos")
-    //setTimeout(verificar_sesion, 2000)
-    verificar_sesion()
+    setTimeout(verificar_sesion, 2000)
+    //verificar_sesion()
 
     function verificar_sesion() {
         let funcion = 'verificar_sesion'
@@ -17,7 +17,7 @@ $(document).ready(function () {
                         menu_superior(respuesta)
                         menu_lateral(respuesta)
                         obtener_datos()
-                        CloseLoader()
+                        CloseLoader('Datos cargados', 'success')
                     } else {
                         location.href = "../Vistas/"
                     }
@@ -95,6 +95,12 @@ $(document).ready(function () {
                             <p>Mi Perfil</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/Sistema_Farmacia/Vistas/Clientes.php" class="nav-link">
+                            <i class="fa-solid fa-user"></i>
+                            <p>Clientes</p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         `
@@ -118,17 +124,19 @@ $(document).ready(function () {
                         <h5 id="apelllidos_usuario" class="text-muted text-center">${usuario.apellido_paterno} ${usuario.apellido_materno}</h5>
                         <ul class="list-group list-group-unbordered mb-3">
                             <li class="list-group-item">
-                                <b style="color: #0B7300;">Tipo de Usuario</b>`
-                                if (usuario.id_perfil == '1') {
-                                    template += `<h1 class="badge rounded-pill bg-danger">${usuario.perfil}</h1>`
-                                }
-                                if (usuario.id_perfil == '2') {
-                                    template += `<h1 class="badge rounded-pill bg-warning">${usuario.perfil}</h1>`
-                                }
-                                if (usuario.id_perfil == '3') {
-                                    template += `<h1 class="badge rounded-pill bg-info">${usuario.perfil}</h1>`
-                                }
-                            template += `</li>
+                                <b style="color: #0B7300;">Tipo de Usuario</b>
+                                <span class="float-right">`
+                                    if (usuario.id_perfil == '1') {
+                                        template += `<h1 class="badge badge-danger">${usuario.perfil}</h1>`
+                                    }
+                                    if (usuario.id_perfil == '2') {
+                                        template += `<h1 class="badge rounded-pill bg-warning">${usuario.perfil}</h1>`
+                                    }
+                                    if (usuario.id_perfil == '3') {
+                                        template += `<h1 class="badge rounded-pill bg-info">${usuario.perfil}</h1>`
+                                    }
+                            template += `</span>
+                            </li>
                         </ul>
                         <ul class="list-group list-group-unbordered mb-3">
                             <li class="list-group-item">
@@ -144,8 +152,8 @@ $(document).ready(function () {
                     `
                     $('#card-datos').html(template)
                     let template_1 = `
-                        <div class="card-header bg-success" style="display: flex; justify-content: space-between; align-items: center;">
-                            <div class="card-title">Sobre mi</div>
+                        <div class="card-header bg-success">
+                            <h3 class="card-title">Sobre mi</h3>
                             <div class="card-tools">
                                 <button class="editar_datos btn btn-tool" data-bs-toggle="modal" data-bs-target="#editar_datos_usuario">
                                     <i class="bi bi-pencil-square"></i>
@@ -371,7 +379,7 @@ $(document).ready(function () {
             html: '<i class="fas fa-2x fa-sync-alt fa-spin"></i>',
             title: mensaje,
             showConfirmButton: false
-        })
+        });
     }
 
     function CloseLoader(mensaje, tipo) {

@@ -27,13 +27,17 @@
 <body class="sidebar-mini" style="height: auto;">
     <div class="wrapper">
         <nav id="menu_superior" class="main-header navbar navbar-expand navbar-white navbar-light">
-            
+            <div class="text-center">
+                <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+            </div>
         </nav>
         <aside class="main-sidebar sidebar-white-primary elevation-4">
             <a class="brand-link text-center">
                 <span class="brand-text font-weight-light text-center">Sistema Farmacia</span>
             </a>
             <div id="menu_lateral" class="sidebar">
-                
+                <div class="MT-5 text-center">
+                    <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+                </div>
             </div>
         </aside>
