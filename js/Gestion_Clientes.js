@@ -17,7 +17,7 @@ $(document).ready(function () {
                         menu_superior(respuesta)
                         menu_lateral(respuesta)
                         obtener_clientes()
-                        CloseLoader()
+                        CloseLoader('Clientes Cargados', 'success')
                     } else {
                         location.href = "../Vistas/"
                     }
@@ -99,6 +99,12 @@ $(document).ready(function () {
                         <a href="/Sistema_Farmacia/Vistas/Clientes.php" class="active nav-link">
                             <i class="fa-solid fa-user-tag"></i>
                             <p>Gestion Clientes</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Sistema_Farmacia/Vistas/Laboratorios.php" class="nav-link">
+                            <i class="bi bi-prescription2"></i>
+                            <p>Gestion Laboratorios</p>
                         </a>
                     </li>
                 </ul>
@@ -305,8 +311,7 @@ $(document).ready(function () {
                         obtener_clientes()
                         $('#editar_cliente').modal('hide')
                         $('#form_editar_cliente').triggger('reset')
-                    }
-                    else if(respuesta.mensaje == 'error_sesion'){
+                    } else if(respuesta.mensaje == 'error_sesion'){
                         Swal.fire({
                             position: "top-end",
                             icon: "error",

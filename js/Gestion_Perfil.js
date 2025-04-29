@@ -1,12 +1,12 @@
 $(document).ready(function () {
-    Loader(" Datos")
+    Loader()
     setTimeout(verificar_sesion, 2000)
     //verificar_sesion()
 
     function verificar_sesion() {
         let funcion = 'verificar_sesion'
         $.ajax({
-            url: '../Controlador/LoginController.php',
+            url: '/Sistema_Farmacia/Controlador/LoginController.php',
             data: { funcion },
             type: 'POST',
             success: function (Response) {
@@ -19,7 +19,7 @@ $(document).ready(function () {
                         obtener_datos()
                         CloseLoader('Datos cargados', 'success')
                     } else {
-                        location.href = "../Vistas/"
+                        location.href = "/Sistema_Farmacia/Vistas/"
                     }
                 } catch (error) {
                     console.error(error)
@@ -101,6 +101,12 @@ $(document).ready(function () {
                             <p>Clientes</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/Sistema_Farmacia/Vistas/Laboratorios.php" class="nav-link">
+                            <i class="bi bi-prescription2"></i>
+                            <p>Gestion Laboratorios</p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         `
@@ -110,7 +116,7 @@ $(document).ready(function () {
     function obtener_datos() {
         let funcion = 'obtener_datos'
         $.ajax({
-            url: '../Controlador/UsuarioController.php',
+            url: '/Sistema_Farmacia/Controlador/UsuarioController.php',
             data: { funcion },
             type: 'POST',
             success: function (Response) {
@@ -184,7 +190,7 @@ $(document).ready(function () {
     $(document).on('click', '.editar_datos', (e)=>{
         let funcion='obtener_datos'
         $.ajax({
-            url: '../Controlador/UsuarioController.php',
+            url: '/Sistema_Farmacia/Controlador/UsuarioController.php',
             data: {funcion},
             type: 'POST',
             success: function(Response){
@@ -205,7 +211,7 @@ $(document).ready(function () {
         let direccion = $('#direccion').val()
         let funcion='editar_datos'
         $.ajax({
-            url: '../Controlador/UsuarioController.php',
+            url: '/Sistema_Farmacia/Controlador/UsuarioController.php',
             data: {funcion, usuario, email, telefono, direccion},
             type: 'POST',
             success: function(Response){
@@ -245,7 +251,7 @@ $(document).ready(function () {
     $(document).on('click', '.editar_pass', (e)=>{
         let funcion='obtener_datos'
         $.ajax({
-            url: '../Controlador/UsuarioController.php',
+            url: '/Sistema_Farmacia/Controlador/UsuarioController.php',
             data: {funcion},
             type: 'POST',
             success: function(Response){
@@ -263,7 +269,7 @@ $(document).ready(function () {
         let newpass = $('#newpass').val()
         let funcion='editar_contraseña'
         $.ajax({
-            url: '../Controlador/UsuarioController.php',
+            url: '/Sistema_Farmacia/Controlador/UsuarioController.php',
             data: {funcion, oldpass, newpass},
             type: 'POST',
             success: function(Response){
@@ -312,7 +318,7 @@ $(document).ready(function () {
     $(document).on('click', '.editar_avatar', (e)=>{
         let funcion='obtener_datos'
         $.ajax({
-            url: '../Controlador/UsuarioController.php',
+            url: '/Sistema_Farmacia/Controlador/UsuarioController.php',
             data: {funcion},
             type: 'POST',
             success: function(Response){
@@ -330,7 +336,7 @@ $(document).ready(function () {
     $('#form_cambiar_avatar').submit(e=>{
         let formData = new FormData($('#form_cambiar_avatar')[0])
         $.ajax({
-            url: '../Controlador/UsuarioController.php',
+            url: '/Sistema_Farmacia/Controlador/UsuarioController.php',
             data: formData,
             type: 'POST',
             Cache: false,
